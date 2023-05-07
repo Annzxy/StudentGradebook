@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+ {% block title %}
+ Semester
+ {% endblock %}
+{% block content %}
+   {% if user.is_authenticated %}
+        {% if user.is_superuser %}
+            <a href="{% url 'semester_create' %}" class="btn btn-light">New Semester</a>
+        {% endif %}
+    {% endif %}
+
+    <ul>
+        {% for semester in object_list %}
+            <li>
+                <br href="{% url 'semester_detail' semester.semester_number %}">Semester {{ semester.semester_number}} {{ semester.year}}<br></a>
+                {% if user.is_superuser %}
+                        <a class="btn btn-success" href="{% url 'semester_update' semester.pk %}">Update</a>
+                        <a class="btn btn-danger" href="{% url 'semester_delete' semester.pk %}">Delete</a>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
