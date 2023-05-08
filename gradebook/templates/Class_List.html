@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+ {% block title %}
+Lecturer
+ {% endblock %}
+{% block content %}
+   {% if user.is_authenticated %}
+        {% if user.is_superuser %}
+            <a href="{% url 'class_create' %}" class="btn btn-light">New Class</a>
+        {% endif %}
+    {% endif %}
+
+    <ul>
+        {% for class in object_list %}
+            <li>
+                <a href="{% url 'class_detail' class.id%}"> Class {{ class.class_number}} {{ class.semester}}
+                    {{ class.course}} {{ class.lecturer }}<br></a>
+                {% if user.is_superuser %}
+                        <a class="btn btn-success" href="{% url 'class_update' class.pk %}">Update</a>
+                        <a class="btn btn-danger" href="{% url 'class_delete' class.pk %}">Delete</a>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

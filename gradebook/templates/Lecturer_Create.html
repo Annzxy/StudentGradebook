@@ -1,13 +1,13 @@
 {% extends "base.html" %}
 {% block title %}
-Delete Post
+Create Lecturer
 {% endblock %}
 
 {% block content %}
-    <p>Are you sure to delete?</p>
     <form method="post">
     {% csrf_token %}
-    <button class="btn btn-danger">Delete</button>
+    {{ form.as_p }}
+    <button class="btn btn-primary">Create</button>
     </form>
 
 {% endblock %}

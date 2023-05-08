@@ -24,7 +24,7 @@
     <div class="collapse navbar-collapse" id="navbarColor01">
       <ul class="navbar-nav me-auto">
         <li class="nav-item">
-          <a class="nav-link active" href="#">Home
+          <a class="nav-link active" href="{% url 'index' %}">Home
             <span class="visually-hidden">(current)</span>
           </a>
         </li>
@@ -32,13 +32,13 @@
           <a class="nav-link" href="{% url 'semester_list' %}">Semester</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Course</a>
+          <a class="nav-link" href="{% url 'course_list' %}">Course</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Class</a>
+          <a class="nav-link" href="{% url 'lecturer_list' %}">Lecturer</a>
         </li>
           <li class="nav-item">
-          <a class="nav-link" href="#">Lecturer</a>
+          <a class="nav-link" href="{% url 'class_list' %}">Class</a>
         </li>
           <li class="nav-item">
           <a class="nav-link" href="#">Student</a>

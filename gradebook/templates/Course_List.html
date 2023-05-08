@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+ {% block title %}
+Course
+ {% endblock %}
+{% block content %}
+   {% if user.is_authenticated %}
+        {% if user.is_superuser %}
+            <a href="{% url 'course_create' %}" class="btn btn-light">New Course</a>
+        {% endif %}
+    {% endif %}
+
+    <ul>
+        {% for course in object_list %}
+            <li>
+                <a href="{% url 'course_detail' course.id%}"> {{ course.course_code}}   {{ course.course_name}} <br></a>
+                {% if user.is_superuser %}
+                        <a class="btn btn-success" href="{% url 'course_update' course.pk %}">Update</a>
+                        <a class="btn btn-danger" href="{% url 'course_delete' course.pk %}">Delete</a>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

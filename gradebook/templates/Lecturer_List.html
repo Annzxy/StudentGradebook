@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+ {% block title %}
+Lecturer
+ {% endblock %}
+{% block content %}
+   {% if user.is_authenticated %}
+        {% if user.is_superuser %}
+            <a href="{% url 'lecturer_create' %}" class="btn btn-light">New Lecturer</a>
+        {% endif %}
+    {% endif %}
+
+    <ul>
+        {% for lecturer in object_list %}
+            <li>
+                <a href="{% url 'lecturer_detail' lecturer.id%}"> ID {{ lecturer.staff_ID}}  Name {{ lecturer.first_name}} {{ lecturer.last_name}} <br></a>
+                {% if user.is_superuser %}
+                        <a class="btn btn-success" href="{% url 'lecturer_update' lecturer.pk %}">Update</a>
+                        <a class="btn btn-danger" href="{% url 'lecturer_delete' lecturer.pk %}">Delete</a>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
